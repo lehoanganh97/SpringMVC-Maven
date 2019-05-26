@@ -1,0 +1,7 @@
+package com.servicingportal.customer.dao;
+
+import com.servicingportal.entity.CustomerAccount;
+
+public interface CustomerAccountDAO {
+	public CustomerAccount checkCustomerAccount(String strEmail,String strPass);
+}

@@ -1,0 +1,36 @@
+package com.servicingportal.customer.controller;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.servicingportal.customer.dao.CustomerAccountDAO;
+import com.servicingportal.entity.CustomerAccount;
+import com.servicingportal.lib.ManagerSession;
+
+@Controller
+@RequestMapping(value="/customer")
+public class LoginController {
+//comment
+	@Autowired
+	private CustomerAccountDAO customerAccountDAO;
+	
+	@RequestMapping(value= "/login",method = RequestMethod.POST)
+	public String customerLogin(HttpServletRequest request,Model model,String strEmail,String strPass) {
+		try {
+			CustomerAccount customerAccount = customerAccountDAO.checkCustomerAccount(strEmail, strPass);
+			if (customerAccount == null) {
+				model.addAttribute("errors","false");
+			}
+			ManagerSession.userCustomer(customerAccount, request);
+			return "redirect:customer/home" ;	
+		} catch (Exception e) {
+			// TODO: handle exception
+			return "errorpage";
+		}
+	}
+}

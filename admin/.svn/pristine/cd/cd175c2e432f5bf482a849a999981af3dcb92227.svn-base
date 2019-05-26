@@ -1,0 +1,75 @@
+package com.blackhole.dao;
+
+import java.util.List;
+
+//import javax.persistence.Query;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+
+import com.blackhole.entities.EmployeeAccount;
+import com.blackhole.entities.Role;
+
+@Repository
+public class AdminActionDAOImpl implements AdminActionDAO {
+	@Autowired
+	private SessionFactory factory;
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<EmployeeAccount> getStaffs(){
+		//get the current hibernate session
+		Session session = factory.getCurrentSession();
+		  
+		// create a query to select all orders
+		String sql="FROM EmployeeAccount";
+		Query theQuery = session.createQuery(sql);
+		   
+		// execute query and get result list
+//		List<EmployeeAccount> staffs = theQuery.getResultList();
+		  
+		// return the result
+		
+		return theQuery.list();
+	}
+	@Override
+	public void saveStaff(EmployeeAccount employeeAccount) {
+		// get the current hibernate session
+		Session session = factory.getCurrentSession();
+		
+		// create/update  the EmployeeAccount object to the database table
+		session.saveOrUpdate(employeeAccount);
+	}
+	
+	@Override
+	public EmployeeAccount getStaff(int theId) {
+		// get the current hibernate session
+	    Session session = factory.getCurrentSession();
+	    
+	    // get the staff using the passed empId (primary key)
+	    return session.get(EmployeeAccount.class, theId);
+	}
+	
+	@Override
+    public void deleteStaff(int theId) {
+		// get the current hibernate session
+	    Session session = factory.getCurrentSession();
+	    
+	    // delete the order using the passed id (primary key)
+	    Query theQuery = session.createQuery("delete from EmployeeAccount where empId=:Id");
+	    theQuery.setParameter("Id", theId);
+	    theQuery.executeUpdate();
+	}
+	
+	@Override
+	public List<Role> getAllRoles(){
+		Session session = factory.getCurrentSession();
+		String sql = "From Role";
+		Query query = session.createQuery(sql);
+		return query.list();
+	}
+	
+}

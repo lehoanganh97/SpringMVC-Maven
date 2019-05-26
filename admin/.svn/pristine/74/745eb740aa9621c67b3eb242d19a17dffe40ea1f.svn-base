@@ -1,0 +1,16 @@
+package com.blackhole.service;
+
+import java.util.List;
+
+import com.blackhole.entities.EmployeeAccount;
+
+public interface AdminActionService {
+	//get accounts under role of admin 
+	public List<EmployeeAccount> getStaffs();
+	
+	public void saveStaff(EmployeeAccount theStaff);
+
+    public EmployeeAccount getStaff(int theId);
+
+    public void deleteStaff(int theId);
+}

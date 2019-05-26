@@ -1,0 +1,33 @@
+package com.servicingportal.partner.dao.impl;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.servicingportal.customer.model.CustomerProfile;
+import com.servicingportal.entity.PartnerAccount;
+import com.servicingportal.partner.dao.PartnerLoginDAO;
+import com.servicingportal.partner.model.PartnerProfile;
+
+public class PartnerLoginDAOImpl implements PartnerLoginDAO{
+	private String sqlLogin = "select new "+PartnerProfile.class.getName()+"( p.partnerId, p.partnerFullName, p.isAccept) from"
+			+PartnerAccount.class.getName()+" p where p.partnerEmail = :strEmail and p.partnerPassword = :strPass";
+	
+	@Autowired
+	private SessionFactory sessionFactory;
+	
+	public PartnerProfile login(String strEmail, String strPass){
+		try {
+			Session session = this.sessionFactory.getCurrentSession();
+			Query<PartnerProfile> query = session.createQuery(this.sqlLogin);
+			query.setParameter("strEmail", strEmail);
+			query.setParameter("strPass", strPass);
+			return query.getSingleResult();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Errors: "+e.getMessage());
+			return new PartnerProfile();	
+		}			
+	}
+}

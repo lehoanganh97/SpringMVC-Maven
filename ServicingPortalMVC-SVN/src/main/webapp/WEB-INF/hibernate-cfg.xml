@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+    	http://www.springframework.org/schema/beans/spring-beans.xsd
+    	http://www.springframework.org/schema/tx
+    	http://www.springframework.org/schema/tx/spring-tx.xsd
+    	http://www.springframework.org/schema/aop 
+    	http://www.springframework.org/schema/aop/spring-aop.xsd
+    	http://www.springframework.org/schema/context
+  		http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<!-- Define Database Resource and Connect pool (not yet) -->
+	<bean id="myDataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://chuquydongden08.dyndns.org:3306/servicingportaldb?characterEncoding=UTF-8" />
+		<property name="username" value="connectdb" />
+		<property name="password" value="159753" />
+	</bean>
+	
+	<!-- Setup Hibernate session factory -->
+	<bean id="mySessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="myDataSource" />
+		<property name="packagesToScan" value="com.servicingportal.entity" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">false</prop>
+				<prop key="hibernate.connection.useUnicode">true</prop>
+				<prop key="hibernate.connection.characterEncoding">UTF-8</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- Setup Hibernate transaction manager -->
+	<bean id="myTransactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<!-- Enable configuration of transactional behavior based on annotations -->
+	<tx:annotation-driven proxy-target-class="true"
+		transaction-manager="myTransactionManager" />
+	
+	<!-- Location config interface DAO -->
+	<bean id="customerAccountDAO"
+		class="com.servicingportal.customer.dao.impl.CustomerAccountDAOImpl"/>
+	<bean id="customerOrderServiceDAO"
+		class="com.servicingportal.customer.dao.impl.CustomerOrderServiceDAOImpl"/>
+	<bean id="partnerOrderServiceDAO"
+		class="com.servicingportal.partner.dao.impl.PartnerOrderServiceDAOImpl"/>
+	<bean id="fieldServiceDAO"
+		class="com.servicingportal.partner.dao.impl.PartnerFieldServiceDAOImpl"/>	
+	<bean id="detailServiceDAO"
+		class="com.servicingportal.partner.dao.impl.PartnerDetailServiceDAOImpl"/>	
+	<bean id="partnerAccountDAO"
+		class="com.servicingportal.partner.dao.impl.PartnerPartnerAccountDAOImpl"/>
+	<bean id="servicePostDAO"
+		class="com.servicingportal.partner.dao.impl.PartnerServicePostDAOImpl"/>
+	<bean id="detailServicePostDAO"
+		class="com.servicingportal.partner.dao.impl.PartnerDetailServicePostDAOImpl"/>
+	<bean id="partnerLoginDAO"
+		class="com.servicingportal.partner.dao.impl.PartnerLoginDAOImpl"/>	
+		
+		
+	
+</beans>

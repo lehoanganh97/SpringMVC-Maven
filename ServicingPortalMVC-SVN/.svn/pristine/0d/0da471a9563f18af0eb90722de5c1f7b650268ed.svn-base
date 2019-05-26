@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+ 		http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+
+	<bean id="customerAccountDAO"
+		class="com.servicingportal.customer.dao.impl.CustomerAccountDAOImpl">
+		<property name="sessionFactory" ref="mySessionFactory" />
+	</bean>
+	<bean id="customerOrderServiceDAO"
+		class="com.servicingportal.customer.dao.impl.CustomerOrderServiceDAOImpl">
+		<property name="sessionFactory" ref="mySessionFactory" />
+	</bean>
+	<bean id="partnerOrderServiceDAO"
+		class="com.servicingportal.partner.dao.impl.PartnerOrderServiceDAOImpl">
+		<property name="sessionFactory" ref="mySessionFactory" />
+	</bean>
+	<bean id="partnerFieldServiceDAO"
+		class="com.servicingportal.partner.dao.impl.PartnerFieldServiceDAOImpl">
+		<property name="sessionFactory" ref="mySessionFactory" />
+	</bean>
+	<!-- <bean id="cityDAO" class="com.servicingportal.dao.impl.CityDAOImpl"> 
+		<property name="sessionFactory" ref="mySessionFactory" /> </bean> <bean id="areaDAO" 
+		class="com.servicingportal.dao.impl.AreaDAOImpl"> <property name="sessionFactory" 
+		ref="mySessionFactory" /> </bean> <bean id="cmtDAO" class="com.servicingportal.dao.impl.CmtDAOImpl"> 
+		<property name="sessionFactory" ref="mySessionFactory" /> </bean> <bean id="detailOrderDAO" 
+		class="com.servicingportal.dao.impl.DetailOrderDAOImpl"> <property name="sessionFactory" 
+		ref="mySessionFactory" /> </bean> <bean id="detailScheduleDateDAO" class="com.servicingportal.dao.impl.DetailScheduleDateDAOImpl"> 
+		<property name="sessionFactory" ref="mySessionFactory" /> </bean> <bean id="employeeAccountDAO" 
+		class="com.servicingportal.dao.impl.EmployeeAccountDAOImpl"> <property name="sessionFactory" 
+		ref="mySessionFactory" /> </bean> <bean id="employeeManageFServiceDAO" class="com.servicingportal.dao.impl.EmployeeManageFServiceDAOImpl"> 
+		<property name="sessionFactory" ref="mySessionFactory" /> </bean> <bean id="functionProgramDAO" 
+		class="com.servicingportal.dao.impl.FunctionProgramDAOImpl"> <property name="sessionFactory" 
+		ref="mySessionFactory" /> </bean> <bean id="imageCategoryDAO" class="com.servicingportal.dao.impl.ImageCategoryDAOImpl"> 
+		<property name="sessionFactory" ref="mySessionFactory" /> </bean> <bean id="imageDAO" 
+		class="com.servicingportal.dao.impl.ImageDAOImpl"> <property name="sessionFactory" 
+		ref="mySessionFactory" /> </bean> <bean id="partnerAccountDAO" class="com.servicingportal.dao.impl.PartnerAccountDAOImpl"> 
+		<property name="sessionFactory" ref="mySessionFactory" /> </bean> <bean id="qnACatelogyDAO" 
+		class="com.servicingportal.dao.impl.QnACatelogyDAOImpl"> <property name="sessionFactory" 
+		ref="mySessionFactory" /> </bean> <bean id="qnADAO" class="com.servicingportal.dao.impl.QnADAOImpl"> 
+		<property name="sessionFactory" ref="mySessionFactory" /> </bean> <bean id="roleDAO" 
+		class="com.servicingportal.dao.impl.RoleDAOImpl"> <property name="sessionFactory" 
+		ref="mySessionFactory" /> </bean> <bean id="roleFunctionDAO" class="com.servicingportal.dao.impl.RoleFunctionDAOImpl"> 
+		<property name="sessionFactory" ref="mySessionFactory" /> </bean> <bean id="scheduleDateDAO" 
+		class="com.servicingportal.dao.impl.ScheduleDateDAOImpl"> <property name="sessionFactory" 
+		ref="mySessionFactory" /> </bean> <bean id="scheduleManageDAO" class="com.servicingportal.dao.impl.ScheduleManageDAOImpl"> 
+		<property name="sessionFactory" ref="mySessionFactory" /> </bean> <bean id="typeServiceDAO" 
+		class="com.servicingportal.dao.impl.TypeServiceDAOImpl"> <property name="sessionFactory" 
+		ref="mySessionFactory" /> </bean> <bean id="webDataContentDAO" class="com.servicingportal.dao.impl.WebDataContentDAOImpl"> 
+		<property name="sessionFactory" ref="mySessionFactory" /> </bean> <bean id="detailServiceDAO" 
+		class="com.servicingportal.dao.impl.DetailServiceDAOImpl"> <property name="sessionFactory" 
+		ref="mySessionFactory" /> </bean> <bean id="fieldServiceDAO" class="com.servicingportal.dao.impl.FieldServiceDAOImpl"> 
+		<property name="sessionFactory" ref="mySessionFactory" /> </bean> <bean id="servicePostDAO" 
+		class="com.servicingportal.dao.impl.ServicePostDAOImpl"> <property name="sessionFactory" 
+		ref="mySessionFactory" /> </bean> <bean id="servicePostDetailDAO" class="com.servicingportal.dao.impl.ServicePostDetailDAOImpl"> 
+		<property name="sessionFactory" ref="mySessionFactory" /> </bean> -->
+
+</beans>
