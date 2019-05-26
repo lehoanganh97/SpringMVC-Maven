@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans.xsd">
+ 
+ 
+  <bean id="myDataSource"
+      class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+      <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+      <property name="url" value="jdbc:mysql://chuquydongden08.dyndns.org:3306/servicingportaldb?characterEncoding=UTF-8" />
+      <property name="username" value="connectdb" />
+      <property name="password" value="159753" />
+  </bean>
+ 
+  <bean id="mySessionFactory"
+      class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+      <property name="dataSource" ref="myDataSource" />
+ 
+      <property name="annotatedClasses">
+          <list>
+              <value>com.servicingportal.entity.City</value>
+              <value>com.servicingportal.entity.Area</value>
+              <value>com.servicingportal.entity.Comment</value>
+              <value>com.servicingportal.entity.CustomerAccount</value>
+              <value>com.servicingportal.entity.DetailOrder</value>
+              <value>com.servicingportal.entity.DetailScheduleDate</value>
+              <value>com.servicingportal.entity.DetailService</value>
+              <value>com.servicingportal.entity.EmployeeAccount</value>
+              <value>com.servicingportal.entity.EmployeeManageFservice</value>
+              <value>com.servicingportal.entity.FieldService</value>
+              <value>com.servicingportal.entity.FunctionProgram</value>
+              <value>com.servicingportal.entity.Image</value>
+              <value>com.servicingportal.entity.ImageCategory</value>
+              <value>com.servicingportal.entity.OrderService</value>
+              <value>com.servicingportal.entity.PartnerAccount</value>
+              <value>com.servicingportal.entity.QnA</value>
+              <value>com.servicingportal.entity.QnACatelogy</value>
+              <value>com.servicingportal.entity.Role</value>
+              <value>com.servicingportal.entity.RoleFunction</value>
+              <value>com.servicingportal.entity.ScheduleDate</value>
+              <value>com.servicingportal.entity.ScheduleManage</value>
+              <value>com.servicingportal.entity.ServicePost</value>
+              <value>com.servicingportal.entity.ServicePostDetail</value>
+              <value>com.servicingportal.entity.TypeService</value>
+              <value>com.servicingportal.entity.WebDataContent</value>
+              <value>com.servicingportal.entity.WorkingArea</value>
+          </list>
+      </property>
+ 
+      <property name="hibernateProperties">
+          <props>
+              <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+              <prop key="hibernate.show_sql">true</prop>
+              <prop key="hibernate.format_sql">false</prop>
+              <prop key="hibernate.connection.useUnicode">true</prop>
+              <prop key="hibernate.connection.characterEncoding">UTF-8</prop>
+              
+              <!--Loc edit 14/02/2019
+              <prop key="hibernate.connection.charSet">UTF-8</prop>
+              <prop key="hibernate.c3p0.min_size">5</prop>
+              <prop key="hibernate.c3p0.max_size">20</prop>
+              <prop key="hibernate.c3p0.timeout">1800</prop>
+              <prop key="hibernate.c3p0.max_statements">50</prop>
+              <prop key="hibernate.temp.use_jdbc_metadata_defaults">true</prop>
+              -->
+          </props>
+      </property>
+  </bean>
+  
+</beans>

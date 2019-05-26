@@ -1,0 +1,29 @@
+package com.servicingportal.customer.controller;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.servicingportal.customer.dao.CustomerAccountDAO;
+import com.servicingportal.customer.model.CustomerProfile;
+import com.servicingportal.lib.Login;
+import com.servicingportal.lib.ManagerSession;
+
+@Controller
+public class CustomerController {
+	@Autowired
+	private CustomerAccountDAO customerAccountDAO;
+	
+	@RequestMapping(value={"","/","home"},method = RequestMethod.GET)
+	public String index(HttpServletRequest request, Model model){
+		model.addAttribute("profile","");
+		if(Login.checkUserLogin(request)){
+			model.addAttribute("profile",(CustomerProfile) ManagerSession.userCustomer(request));
+		}
+		return "customer/home";
+	}
+}

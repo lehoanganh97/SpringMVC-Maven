@@ -1,0 +1,6 @@
+0:0:0:0:0:0:0:1 - - [21/Feb/2019:20:29:36 +0700] "GET /PortalServiceMVC HTTP/1.1" 302 - http-bio-8080-exec-1 0
+0:0:0:0:0:0:0:1 - - [21/Feb/2019:20:29:40 +0700] "GET /PortalServiceMVC/ HTTP/1.1" 500 6646 http-bio-8080-exec-2 3674
+0:0:0:0:0:0:0:1 - - [21/Feb/2019:20:29:40 +0700] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-3 0
+0:0:0:0:0:0:0:1 - - [21/Feb/2019:20:30:00 +0700] "GET /PortalServiceMVC/quydh HTTP/1.1" 200 4940 http-bio-8080-exec-5 1031
+0:0:0:0:0:0:0:1 - - [21/Feb/2019:20:30:48 +0700] "POST /PortalServiceMVC/question/send HTTP/1.1" 302 - http-bio-8080-exec-7 20
+0:0:0:0:0:0:0:1 - - [21/Feb/2019:20:30:49 +0700] "GET /PortalServiceMVC/quydh?question=null HTTP/1.1" 200 4940 http-bio-8080-exec-8 760

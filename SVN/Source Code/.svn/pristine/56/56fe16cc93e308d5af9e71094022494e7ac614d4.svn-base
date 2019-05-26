@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- Database connection settings -->
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://chuquydongden08.dyndns.org:3306/servicingportaldb?characterEncoding=UTF-8</property>
+		<property name="hibernate.connection.username">connectdb</property>
+		<property name="hibernate.connection.password">159753</property>
+		
+		<!-- Hibernate properties -->
+		<property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.search.autoregister_listeners">true</property>
+		<property name="hibernate.validator.apply_to_ddl">false</property>
+		<property name="hibernate.show_sql">true</property>
+		
+		<!-- Entity annotation -->
+		<mapping class="com.servicingportal.entity.WorkingArea" />
+		<mapping class="com.servicingportal.entity.City" />
+		<mapping class="com.servicingportal.entity.ScheduleManage" />
+		<mapping class="com.servicingportal.entity.FunctionProgram" />
+		<mapping class="com.servicingportal.entity.Comment" />
+		<mapping class="com.servicingportal.entity.ServicePost" />
+		<mapping class="com.servicingportal.entity.DetailService" />
+		<mapping class="com.servicingportal.entity.RoleFunction" />
+		<mapping class="com.servicingportal.entity.DetailScheduleDate" />
+		<mapping class="com.servicingportal.entity.FieldService" />
+		<mapping class="com.servicingportal.entity.EmployeeManageFservice" />
+		<mapping class="com.servicingportal.entity.CustomerAccount" />
+		<mapping class="com.servicingportal.entity.EmployeeAccount" />
+		<mapping class="com.servicingportal.entity.QnA" />
+		<mapping class="com.servicingportal.entity.DetailOrder" />
+		<mapping class="com.servicingportal.entity.ScheduleDate" />
+		<mapping class="com.servicingportal.entity.QnACatelogy" />
+		<mapping class="com.servicingportal.entity.Role" />
+		<mapping class="com.servicingportal.entity.Area" />
+		<mapping class="com.servicingportal.entity.WebDataContent" />
+		<mapping class="com.servicingportal.entity.ServicePostDetail" />
+		<mapping class="com.servicingportal.entity.TypeService" />
+		<mapping class="com.servicingportal.entity.OrderService" />
+		<mapping class="com.servicingportal.entity.PartnerAccount" />
+		<mapping class="com.servicingportal.entity.Image" />
+		<mapping class="com.servicingportal.entity.ImageCategory" />
+	</session-factory>
+</hibernate-configuration>
